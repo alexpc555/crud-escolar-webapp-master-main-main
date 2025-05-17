@@ -52,22 +52,23 @@ export class EventosComponent implements OnInit {
 public registrar() {
   this.errors = this.eventosService.validarEvento(this.evento, false);
 
-  if (!$.isEmptyObject(this.errors)) {
-    return false;
-  }
+if (!$.isEmptyObject(this.errors)) {
+  console.warn('⚠️ Errores en la validación:', this.errors);
+  return false;
+}
 
   this.eventosService.registrarEvento(this.evento).subscribe(
     (response) => {
-      alert("Evento registrado correctamente (prueba)");
-      console.log("Respuesta simulada: ", response); //es simulacion ya que no tengo bases de datos 
-      this.router.navigate(["/home"]); // O cualquier otra ruta
+      alert("✅ Evento registrado correctamente.");
+      console.log("Respuesta del backend:", response);
+      this.router.navigate(["/home"]);
     },
     (error) => {
-      alert("Error al registrar evento (prueba)");
+      console.error("Error al registrar evento:", error);
+      alert("❌ Error al registrar evento. Verifica los datos.");
     }
   );
 }
-
 
   public actualizar(): void {
     this.errors = this.eventosService.validarEvento(this.evento, this.editar);

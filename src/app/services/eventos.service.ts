@@ -25,14 +25,14 @@ export class EventosService {
   public esquemaEvento() {
     return {
       'titulo': '', //solo letras, numeros y espacios no se permite caracteres especiales 
-      'Tipo_de_evento': '', 
-      'Fecha_de_realizacion':'',
+      'tipo_de_evento': '', 
+      'fecha_de_realizacion':'',
       'hora_inicio': '', // solo hora en formato HH:mm
       'hora_fin': '', //se utilizara un datepicker
       'lugar': '', //solo admitir caracteres alfanumericos y espacios
-      'publico_objetivo': '',
-      'Programa_educativo':'',
-      'Responsable_del_evento':'',
+      'publico_objetivo': [],
+      'programa_educativo':'',
+      'responsable_del_evento':'',
       'descripcion_breve': '', //limite maximo de 300caracteres solo se permiten letras, numeros y signos de puntuacion basico 
       'cupo_max':'', //solo numeros de maximo 3 digitos 
     };
@@ -49,15 +49,15 @@ public validarEvento(data: any, editar: boolean) {
     error["titulo"] = "El título solo puede contener letras, números y espacios.";
   }
 
-  if (!this.validatorService.required(data["Tipo_de_evento"])) {
-    error["Tipo_de_evento"] = this.errorService.required;
+  if (!this.validatorService.required(data["tipo_de_evento"])) {
+    error["tipo_de_evento"] = this.errorService.required;
   }
 
 
-    if (!this.validatorService.required(data["Fecha_de_realizacion"])) {
-    error["Fecha_de_realizacion"] = this.errorService.required;
-  } else if (!this.validatorService.date(data["Fecha_de_realizacion"])) {
-    error["Fecha_de_realizacion"] = this.errorService.betweenDate;
+    if (!this.validatorService.required(data["fecha_de_realizacion"])) {
+    error["fecha_de_realizacion"] = this.errorService.required;
+  } else if (!this.validatorService.date(data["fecha_de_realizacion"])) {
+    error["fecha_de_realizacion"] = this.errorService.betweenDate;
   }
 
 
@@ -84,12 +84,12 @@ if (!this.validatorService.required(data["hora_fin"])) {
     error["publico_objetivo"] = this.errorService.required;
   }
 
-  if (!this.validatorService.required(data["Programa_educativo"])) {
-    error["Programa_educativo"] = this.errorService.required;
+  if (!this.validatorService.required(data["programa_educativo"])) {
+    error["programa_educativo"] = this.errorService.required;
   }
 
-  if (!this.validatorService.required(data["Responsable_del_evento"])) {
-    error["Responsable_del_evento"] = this.errorService.required;
+  if (!this.validatorService.required(data["responsable_del_evento"])) {
+    error["responsable_del_evento"] = this.errorService.required;
   }
 
   if (!this.validatorService.required(data["descripcion_breve"])) {
@@ -110,19 +110,9 @@ if (!this.validatorService.required(data["hora_fin"])) {
 }
 
   
-  // CRUD HTTP Services
-  //no mover aun
-  public registrarEvento(data: any): Observable<any> {
-  console.log("Simulación de registro de evento: ", data);
-  
-  // Simulamos una respuesta positiva como si se hubiera registrado correctamente
-  return new Observable(observer => {
-    setTimeout(() => {
-      observer.next({ mensaje: "Evento registrado correctamente (simulado)" });
-      observer.complete();
-    }, 1000); // Esperamos 1 segundo para simular latencia
-  });
-}
+  public registrarEvento (data: any): Observable <any>{
+    return this.http.post<any>(`${environment.url_api}/eventos/`,data, httpOptions);
+  }
 
 //http que aun no funcionan
 

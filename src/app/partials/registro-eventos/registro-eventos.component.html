@@ -17,21 +17,21 @@
       <!-- Tipo de evento -->
       <mat-form-field class="mat-input" appearance="outline">
         <mat-label>Tipo de evento</mat-label>
-        <mat-select [(ngModel)]="evento.Tipo_de_evento">
+        <mat-select [(ngModel)]="evento.tipo_de_evento">
           <mat-option *ngFor="let tipo of tiposEvento" [value]="tipo">{{ tipo }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <div *ngIf="errors.Tipo_de_evento" class="invalid-feedback">{{ errors.Tipo_de_evento }}</div>
+      <div *ngIf="errors.tipo_de_evento" class="invalid-feedback">{{ errors.tipo_de_evento }}</div>
 
 
       <!-- Fecha de realización -->
 <mat-form-field class="mat-input" appearance="outline">
   <mat-label>Fecha de realización</mat-label>
-  <input matInput [matDatepicker]="pickerRealizacion" [(ngModel)]="evento.Fecha_de_realizacion" (focus)="pickerRealizacion.open()" (dateChange)="changeFechaRealizacion($event)">
+  <input matInput [matDatepicker]="pickerRealizacion" [(ngModel)]="evento.fecha_de_realizacion" (focus)="pickerRealizacion.open()" (dateChange)="changeFechaRealizacion($event)">
   <mat-datepicker-toggle matSuffix [for]="pickerRealizacion"></mat-datepicker-toggle>
   <mat-datepicker #pickerRealizacion></mat-datepicker>
 </mat-form-field>
-<div *ngIf="errors.Fecha_de_realizacion" class="invalid-feedback">{{ errors.Fecha_de_realizacion }}</div>
+<div *ngIf="errors.fecha_de_realizacion" class="invalid-feedback">{{ errors.fecha_de_realizacion }}</div>
 
 <!-- Hora de inicio -->
 <mat-form-field class="mat-input" appearance="outline">
@@ -75,19 +75,19 @@
             <!-- Programa educativo -->
       <mat-form-field class="mat-input" appearance="outline">
         <mat-label>Programa educativo</mat-label>
-        <mat-select [(ngModel)]="evento.Programa_educativo">
+        <mat-select [(ngModel)]="evento.programa_educativo">
           <mat-option *ngFor="let programa of programas" [value]="programa">{{ programa }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <div *ngIf="errors.Programa_educativo" class="invalid-feedback">{{ errors.Programa_educativo }}</div>
+      <div *ngIf="errors.programa_educativo" class="invalid-feedback">{{ errors.programa_educativo }}</div>
 
       
       <!-- Responsable -->
       <mat-form-field class="mat-input" appearance="outline">
         <mat-label>Responsable del evento</mat-label>
-        <input matInput [(ngModel)]="evento.Responsable_del_evento" placeholder="Nombre del responsable">
+        <input matInput [(ngModel)]="evento.responsable_del_evento" placeholder="Nombre del responsable">
       </mat-form-field>
-      <div *ngIf="errors.Responsable_del_evento" class="invalid-feedback">{{ errors.Responsable_del_evento }}</div>
+      <div *ngIf="errors.responsable_del_evento" class="invalid-feedback">{{ errors.responsable_del_evento }}</div>
 
       <!-- Descripción breve -->
       <mat-form-field class="mat-input" appearance="outline">

@@ -110,10 +110,18 @@ export class EventosComponent implements OnInit {
     }
   }
 
+
   public changeFechaFin(event: any): void {
     const fecha = event.value;
     if (fecha) {
       this.evento.fecha_fin = fecha.toISOString().split('T')[0];
     }
   }
+
+  public changeFechaRealizacion(event: any): void {
+  const fecha = event.value;
+  if (fecha) {
+    this.evento.Fecha_de_realizacion = fecha.toISOString().split('T')[0];
+  }
+}
 }

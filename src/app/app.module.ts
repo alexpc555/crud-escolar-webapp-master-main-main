@@ -40,6 +40,9 @@ import { GraficasScreenComponent } from './screens/graficas-screen/graficas-scre
 import { EventosScreenComponent } from './screens/registro-eventos-screen/registro-eventos-screen.component';
 import { EventosComponent } from './partials/registro-eventos/registro-eventos.component';
 import { NgChartsModule } from 'ng2-charts';
+import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
+
+
 
 @NgModule({
   declarations: [
@@ -67,6 +70,8 @@ import { NgChartsModule } from 'ng2-charts';
     ReactiveFormsModule, // ✅ Añadido
     HttpClientModule,
     NgChartsModule,
+    NgxMatTimepickerModule,
+    
 
     // Material Modules
     MatButtonModule,
@@ -82,6 +87,7 @@ import { NgChartsModule } from 'ng2-charts';
     MatTableModule,
     MatPaginatorModule,
     MatDialogModule,
+    
 
     // Directiva Mask
     NgxMaskDirective,

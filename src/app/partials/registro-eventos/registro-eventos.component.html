@@ -24,33 +24,32 @@
       <div *ngIf="errors.Tipo_de_evento" class="invalid-feedback">{{ errors.Tipo_de_evento }}</div>
 
 
-                  <!-- Fecha de realizacion -->
-      <mat-form-field class="mat-input" appearance="outline">
-        <mat-label>Fecha de realizacion</mat-label>
-        <input matInput [matDatepicker]="pickerInicio" [(ngModel)]="evento.Fecha_de_realizacion" (focus)="pickerInicio.open()" (dateChange)="changeFechaInicio($event)">
-        <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
-        <mat-datepicker #pickerInicio></mat-datepicker>
-      </mat-form-field>
-      <div *ngIf="errors.Fecha_de_realizacion" class="invalid-feedback">{{ errors.Fecha_de_realizacion }}</div>
+      <!-- Fecha de realización -->
+<mat-form-field class="mat-input" appearance="outline">
+  <mat-label>Fecha de realización</mat-label>
+  <input matInput [matDatepicker]="pickerRealizacion" [(ngModel)]="evento.Fecha_de_realizacion" (focus)="pickerRealizacion.open()" (dateChange)="changeFechaRealizacion($event)">
+  <mat-datepicker-toggle matSuffix [for]="pickerRealizacion"></mat-datepicker-toggle>
+  <mat-datepicker #pickerRealizacion></mat-datepicker>
+</mat-form-field>
+<div *ngIf="errors.Fecha_de_realizacion" class="invalid-feedback">{{ errors.Fecha_de_realizacion }}</div>
 
+<!-- Hora de inicio -->
+<mat-form-field class="mat-input" appearance="outline">
+  <mat-label>Hora de inicio</mat-label>
+  <input matInput [ngxMatTimepicker]="inicioPicker" [(ngModel)]="evento.hora_inicio" placeholder="Selecciona hora" readonly>
+  <ngx-mat-timepicker-toggle matSuffix [for]="inicioPicker"></ngx-mat-timepicker-toggle>
+  <ngx-mat-timepicker #inicioPicker></ngx-mat-timepicker>
+</mat-form-field>
+<div *ngIf="errors.hora_inicio" class="invalid-feedback">{{ errors.hora_inicio }}</div>
 
-            <!-- Fecha de inicio -->
-      <mat-form-field class="mat-input" appearance="outline">
-        <mat-label>Fecha de inicio</mat-label>
-        <input matInput [matDatepicker]="pickerInicio" [(ngModel)]="evento.fecha_inicio" (focus)="pickerInicio.open()" (dateChange)="changeFechaInicio($event)">
-        <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
-        <mat-datepicker #pickerInicio></mat-datepicker>
-      </mat-form-field>
-      <div *ngIf="errors.fecha_inicio" class="invalid-feedback">{{ errors.fecha_inicio }}</div>
-
-      <!-- Fecha de fin -->
-      <mat-form-field class="mat-input" appearance="outline">
-        <mat-label>Fecha de fin</mat-label>
-        <input matInput [matDatepicker]="pickerFin" [(ngModel)]="evento.fecha_fin" (focus)="pickerFin.open()" (dateChange)="changeFechaFin($event)">
-        <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
-        <mat-datepicker #pickerFin></mat-datepicker>
-      </mat-form-field>
-      <div *ngIf="errors.fecha_fin" class="invalid-feedback">{{ errors.fecha_fin }}</div>
+<!-- Hora de fin -->
+<mat-form-field class="mat-input" appearance="outline">
+  <mat-label>Hora de fin</mat-label>
+  <input matInput [ngxMatTimepicker]="finPicker" [(ngModel)]="evento.hora_fin" placeholder="Selecciona hora" readonly>
+  <ngx-mat-timepicker-toggle matSuffix [for]="finPicker"></ngx-mat-timepicker-toggle>
+  <ngx-mat-timepicker #finPicker></ngx-mat-timepicker>
+</mat-form-field>
+<div *ngIf="errors.hora_fin" class="invalid-feedback">{{ errors.hora_fin }}</div>
 
 
       <!-- Lugar -->

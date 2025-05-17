@@ -27,7 +27,6 @@ export class EventosService {
       'titulo': '', //solo letras, numeros y espacios no se permite caracteres especiales 
       'Tipo_de_evento': '', 
       'Fecha_de_realizacion':'',
-      'fecha_inicio': '', //se utilizara un datepicker
       'hora_inicio': '', // solo hora en formato HH:mm
       'hora_fin': '', //se utilizara un datepicker
       'lugar': '', //solo admitir caracteres alfanumericos y espacios

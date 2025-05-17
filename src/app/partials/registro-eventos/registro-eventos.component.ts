@@ -21,7 +21,7 @@ export class EventosComponent implements OnInit {
   // Listas para los select y checkboxes
   public programas: string[] = ['Ingeniería 1', 'Ingeniería 2', 'Ingeniería 3'];
   public tiposEvento: string[] = ['Conferencia', 'Taller', 'Seminario', 'Congreso']; // Puedes ajustarlos a lo que necesites
-  public publicos: string[] = ['Estudiantes', 'Profesores', 'Público General'];
+  public publicos: string[] = ['Estudiantes', 'Profesores', 'Público General']; 
 
   constructor(
     private eventosService: EventosService,
@@ -59,7 +59,7 @@ public registrar() {
   this.eventosService.registrarEvento(this.evento).subscribe(
     (response) => {
       alert("Evento registrado correctamente (prueba)");
-      console.log("Respuesta simulada: ", response);
+      console.log("Respuesta simulada: ", response); //es simulacion ya que no tengo bases de datos 
       this.router.navigate(["/home"]); // O cualquier otra ruta
     },
     (error) => {
@@ -126,4 +126,5 @@ public registrar() {
     this.evento.Fecha_de_realizacion = fecha.toISOString().split('T')[0];
   }
 }
+
 }

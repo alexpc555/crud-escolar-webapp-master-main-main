@@ -28,7 +28,8 @@ export class EventosService {
       'Tipo_de_evento': '', 
       'Fecha_de_realizacion':'',
       'fecha_inicio': '', //se utilizara un datepicker
-      'fecha_fin': '', //se utilizara un datepicker
+      'hora_inicio': '', // solo hora en formato HH:mm
+      'hora_fin': '', //se utilizara un datepicker
       'lugar': '', //solo admitir caracteres alfanumericos y espacios
       'publico_objetivo': '',
       'Programa_educativo':'',
@@ -61,17 +62,18 @@ public validarEvento(data: any, editar: boolean) {
   }
 
 
-  if (!this.validatorService.required(data["fecha_inicio"])) {
-    error["fecha_inicio"] = this.errorService.required;
-  } else if (!this.validatorService.date(data["fecha_inicio"])) {
-    error["fecha_inicio"] = this.errorService.betweenDate;
-  }
+if (!this.validatorService.required(data["hora_inicio"])) {
+  error["hora_inicio"] = this.errorService.required;
+} else if (!this.validatorService.time(data["hora_inicio"])) {
+  error["hora_inicio"] = "La hora debe estar en formato válido (HH:mm).";
+}
 
-  if (!this.validatorService.required(data["fecha_fin"])) {
-    error["fecha_fin"] = this.errorService.required;
-  } else if (!this.validatorService.date(data["fecha_fin"])) {
-    error["fecha_fin"] = this.errorService.betweenDate;
-  }
+if (!this.validatorService.required(data["hora_fin"])) {
+  error["hora_fin"] = this.errorService.required;
+} else if (!this.validatorService.time(data["hora_fin"])) {
+  error["hora_fin"] = "La hora debe estar en formato válido (HH:mm).";
+}
+
 
   if (!this.validatorService.required(data["lugar"])) {
     error["lugar"] = this.errorService.required;
@@ -111,15 +113,30 @@ public validarEvento(data: any, editar: boolean) {
   
   // CRUD HTTP Services
   //no mover aun
-
   public registrarEvento(data: any): Observable<any> {
-    const token = this.facadeService.getSessionToken();
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token
-    });
-    return this.http.post<any>(`${environment.url_api}/eventos/`, data, { headers });
-  }
+  console.log("Simulación de registro de evento: ", data);
+  
+  // Simulamos una respuesta positiva como si se hubiera registrado correctamente
+  return new Observable(observer => {
+    setTimeout(() => {
+      observer.next({ mensaje: "Evento registrado correctamente (simulado)" });
+      observer.complete();
+    }, 1000); // Esperamos 1 segundo para simular latencia
+  });
+}
+
+//http que aun no funcionan
+
+
+
+ // public registrarEvento(data: any): Observable<any> {
+ //   const token = this.facadeService.getSessionToken();
+ //   const headers = new HttpHeaders({
+ //     'Content-Type': 'application/json',
+ //     'Authorization': 'Bearer ' + token
+ //   });
+ //   return this.http.post<any>(`${environment.url_api}/eventos/`, data, { headers });
+ // }
 
   public obtenerEventos(): Observable<any> {
     const token = this.facadeService.getSessionToken();

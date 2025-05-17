@@ -42,6 +42,7 @@
 </mat-form-field>
 <div *ngIf="errors.hora_inicio" class="invalid-feedback">{{ errors.hora_inicio }}</div>
 
+
 <!-- Hora de fin -->
 <mat-form-field class="mat-input" appearance="outline">
   <mat-label>Hora de fin</mat-label>
@@ -50,7 +51,6 @@
   <ngx-mat-timepicker #finPicker></ngx-mat-timepicker>
 </mat-form-field>
 <div *ngIf="errors.hora_fin" class="invalid-feedback">{{ errors.hora_fin }}</div>
-
 
       <!-- Lugar -->
       <mat-form-field class="mat-input" appearance="outline">
@@ -96,27 +96,6 @@
       </mat-form-field>
       <div *ngIf="errors.descripcion_breve" class="invalid-feedback">{{ errors.descripcion_breve }}</div>
 
-      <!-- Programa educativo -->
-      <mat-form-field class="mat-input" appearance="outline">
-        <mat-label>Programa educativo</mat-label>
-        <mat-select [(ngModel)]="evento.Programa_educativo">
-          <mat-option *ngFor="let programa of programas" [value]="programa">{{ programa }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <div *ngIf="errors.Programa_educativo" class="invalid-feedback">{{ errors.Programa_educativo }}</div>
-
-      <!-- Público objetivo -->
-      <div class="checkbox-group">
-        <label class="title-materias">Público objetivo</label>
-        <mat-checkbox *ngFor="let publico of publicos"
-                      (change)="checkboxPublicoChange($event)"
-                      [checked]="revisarPublico(publico)"
-                      [value]="publico">
-          {{ publico }}
-        </mat-checkbox>
-      </div>
-      <div *ngIf="errors.publico_objetivo" class="invalid-feedback">{{ errors.publico_objetivo }}</div>
-
 
       <!-- Cupo máximo -->
       <mat-form-field class="mat-input" appearance="outline">
@@ -129,7 +108,6 @@
       <div class="section-buttons">
         <button class="btn btn-danger" (click)="regresar()">Cancelar</button>
         <button *ngIf="!editar" class="btn btn-primary" type="submit" (click)="registrar()">Registrar</button>
-        <button *ngIf="editar" class="btn btn-primary" type="submit" (click)="actualizar()">Actualizar</button>
       </div>
     </div>
   </div>

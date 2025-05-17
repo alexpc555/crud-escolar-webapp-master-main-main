@@ -49,23 +49,25 @@ export class EventosComponent implements OnInit {
     this.location.back();
   }
 
-  public registrar(): void {
-    this.errors = this.eventosService.validarEvento(this.evento, this.editar);
+public registrar() {
+  this.errors = this.eventosService.validarEvento(this.evento, false);
 
-    if (!$.isEmptyObject(this.errors)) {
-      return;
-    }
-
-    this.eventosService.registrarEvento(this.evento).subscribe({
-      next: () => {
-        alert('Evento registrado correctamente');
-        this.router.navigate(['home']);
-      },
-      error: () => {
-        alert('No se pudo registrar el evento');
-      }
-    });
+  if (!$.isEmptyObject(this.errors)) {
+    return false;
   }
+
+  this.eventosService.registrarEvento(this.evento).subscribe(
+    (response) => {
+      alert("Evento registrado correctamente (prueba)");
+      console.log("Respuesta simulada: ", response);
+      this.router.navigate(["/home"]); // O cualquier otra ruta
+    },
+    (error) => {
+      alert("Error al registrar evento (prueba)");
+    }
+  );
+}
+
 
   public actualizar(): void {
     this.errors = this.eventosService.validarEvento(this.evento, this.editar);

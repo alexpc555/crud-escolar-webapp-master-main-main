@@ -79,7 +79,14 @@ export class ValidatorService {
    wordsAndNumbers(input: any) {
   let pat = new RegExp('^[A-Za-zÑñáéíóúÁÉÍÓÚ0-9 ]+$');
   return pat.test(input);
+
 }
- 
+
+time(input: any): boolean {
+  const regEx = /^(0?[1-9]|1[0-2]):[0-5][0-9]\s?(AM|PM)$/i;
+  return regEx.test(input);
+}
+
+
   
 }

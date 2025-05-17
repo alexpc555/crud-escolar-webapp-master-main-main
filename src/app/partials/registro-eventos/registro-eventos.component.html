@@ -23,6 +23,36 @@
       </mat-form-field>
       <div *ngIf="errors.Tipo_de_evento" class="invalid-feedback">{{ errors.Tipo_de_evento }}</div>
 
+
+                  <!-- Fecha de realizacion -->
+      <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>Fecha de realizacion</mat-label>
+        <input matInput [matDatepicker]="pickerInicio" [(ngModel)]="evento.Fecha_de_realizacion" (focus)="pickerInicio.open()" (dateChange)="changeFechaInicio($event)">
+        <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+        <mat-datepicker #pickerInicio></mat-datepicker>
+      </mat-form-field>
+      <div *ngIf="errors.Fecha_de_realizacion" class="invalid-feedback">{{ errors.Fecha_de_realizacion }}</div>
+
+
+            <!-- Fecha de inicio -->
+      <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>Fecha de inicio</mat-label>
+        <input matInput [matDatepicker]="pickerInicio" [(ngModel)]="evento.fecha_inicio" (focus)="pickerInicio.open()" (dateChange)="changeFechaInicio($event)">
+        <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+        <mat-datepicker #pickerInicio></mat-datepicker>
+      </mat-form-field>
+      <div *ngIf="errors.fecha_inicio" class="invalid-feedback">{{ errors.fecha_inicio }}</div>
+
+      <!-- Fecha de fin -->
+      <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>Fecha de fin</mat-label>
+        <input matInput [matDatepicker]="pickerFin" [(ngModel)]="evento.fecha_fin" (focus)="pickerFin.open()" (dateChange)="changeFechaFin($event)">
+        <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+        <mat-datepicker #pickerFin></mat-datepicker>
+      </mat-form-field>
+      <div *ngIf="errors.fecha_fin" class="invalid-feedback">{{ errors.fecha_fin }}</div>
+
+
       <!-- Lugar -->
       <mat-form-field class="mat-input" appearance="outline">
         <mat-label>Lugar</mat-label>
@@ -30,6 +60,29 @@
       </mat-form-field>
       <div *ngIf="errors.lugar" class="invalid-feedback">{{ errors.lugar }}</div>
 
+            <!-- Público objetivo -->
+      <div class="checkbox-group">
+        <label class="title-materias">Público objetivo</label>
+        <mat-checkbox *ngFor="let publico of publicos"
+                      (change)="checkboxPublicoChange($event)"
+                      [checked]="revisarPublico(publico)"
+                      [value]="publico">
+          {{ publico }}
+        </mat-checkbox>
+      </div>
+      <div *ngIf="errors.publico_objetivo" class="invalid-feedback">{{ errors.publico_objetivo }}</div>
+
+
+            <!-- Programa educativo -->
+      <mat-form-field class="mat-input" appearance="outline">
+        <mat-label>Programa educativo</mat-label>
+        <mat-select [(ngModel)]="evento.Programa_educativo">
+          <mat-option *ngFor="let programa of programas" [value]="programa">{{ programa }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="errors.Programa_educativo" class="invalid-feedback">{{ errors.Programa_educativo }}</div>
+
+      
       <!-- Responsable -->
       <mat-form-field class="mat-input" appearance="outline">
         <mat-label>Responsable del evento</mat-label>
@@ -65,23 +118,6 @@
       </div>
       <div *ngIf="errors.publico_objetivo" class="invalid-feedback">{{ errors.publico_objetivo }}</div>
 
-      <!-- Fecha de inicio -->
-      <mat-form-field class="mat-input" appearance="outline">
-        <mat-label>Fecha de inicio</mat-label>
-        <input matInput [matDatepicker]="pickerInicio" [(ngModel)]="evento.fecha_inicio" (focus)="pickerInicio.open()" (dateChange)="changeFechaInicio($event)">
-        <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
-        <mat-datepicker #pickerInicio></mat-datepicker>
-      </mat-form-field>
-      <div *ngIf="errors.fecha_inicio" class="invalid-feedback">{{ errors.fecha_inicio }}</div>
-
-      <!-- Fecha de fin -->
-      <mat-form-field class="mat-input" appearance="outline">
-        <mat-label>Fecha de fin</mat-label>
-        <input matInput [matDatepicker]="pickerFin" [(ngModel)]="evento.fecha_fin" (focus)="pickerFin.open()" (dateChange)="changeFechaFin($event)">
-        <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
-        <mat-datepicker #pickerFin></mat-datepicker>
-      </mat-form-field>
-      <div *ngIf="errors.fecha_fin" class="invalid-feedback">{{ errors.fecha_fin }}</div>
 
       <!-- Cupo máximo -->
       <mat-form-field class="mat-input" appearance="outline">

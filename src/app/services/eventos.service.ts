@@ -26,6 +26,7 @@ export class EventosService {
     return {
       'titulo': '', //solo letras, numeros y espacios no se permite caracteres especiales 
       'Tipo_de_evento': '', 
+      'Fecha_de_realizacion':'',
       'fecha_inicio': '', //se utilizara un datepicker
       'fecha_fin': '', //se utilizara un datepicker
       'lugar': '', //solo admitir caracteres alfanumericos y espacios
@@ -51,6 +52,14 @@ public validarEvento(data: any, editar: boolean) {
   if (!this.validatorService.required(data["Tipo_de_evento"])) {
     error["Tipo_de_evento"] = this.errorService.required;
   }
+
+
+    if (!this.validatorService.required(data["Fecha_de_realizacion"])) {
+    error["Fecha_de_realizacion"] = this.errorService.required;
+  } else if (!this.validatorService.date(data["Fecha_de_realizacion"])) {
+    error["Fecha_de_realizacion"] = this.errorService.betweenDate;
+  }
+
 
   if (!this.validatorService.required(data["fecha_inicio"])) {
     error["fecha_inicio"] = this.errorService.required;
